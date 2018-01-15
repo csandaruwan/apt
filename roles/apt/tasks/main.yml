@@ -1,0 +1,24 @@
+---
+### configuring Ubuntu box
+
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: install basic packages
+  action: >
+    {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
+  with_items:
+    - vim
+    - curl
+    - wget
+    - gnome-nettool
+    - awscli
+
+- name: Set up authorized_keys for the root user
+  authorized_key: user=root key="{{ item }}"
+  with_file:
+  - public_keys/chinthaka.pub
+  tags: auth

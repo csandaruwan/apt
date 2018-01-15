@@ -1,0 +1,8 @@
+[srv:children]
+A
+B
+
+[A]
+chin-vm1.local
+[B]
+chin-vm2.local

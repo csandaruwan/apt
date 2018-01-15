@@ -1,0 +1,10 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+# Configure and deploy the ubuntu instances.
+- hosts: srv
+  remote_user: chinthaka
+  become: yes
+  become_user: root
+  roles:
+  - apt
